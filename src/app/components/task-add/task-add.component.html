@@ -1,0 +1,40 @@
+<div class="container">
+  <form (ngSubmit)="addTask()" [formGroup]="newTask" class="mb-4">
+    <div class="mb-4 row">
+      <label for="taskname" class="col-sm-2 col-form-label">Task Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" formControlName="taskname" placeholder="Enter Task Name" required/>
+        <div *ngIf="newTask.controls['taskname'].hasError('required')">
+          Task Name is required.
+        </div>
+      </div>
+    </div>
+    <div class="mb-4 row">
+      <label for="taskdescription" class="col-sm-2 col-form-label">Task Description</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" formControlName="taskdescription" placeholder="Enter Task Description" required/>
+        <div *ngIf="newTask.controls['taskdescription'].hasError('required')">
+          Task Description is required.
+        </div>
+      </div>
+    </div>
+    <div class="mb-4 row">
+      <label for="assignto" class="col-sm-2 col-form-label">Assign To</label>
+      <div class="col-sm-10">
+        <div class="form-group">
+          <select class="form-control" formControlName="assignto" required>
+            <option *ngFor="let e of emplist" [value]="e.userID">{{e.userFirstName + ' ' + e.userLastName}}</option>
+          </select>
+          <div *ngIf="newTask.controls['assignto'].hasError('required')">
+            Assign To is required.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-4 row">
+      <div class="col-sm-10 offset-sm-2">
+        <button type="submit" class="btn btn-primary">Create Task</button>
+      </div>
+    </div>
+  </form>
+</div>

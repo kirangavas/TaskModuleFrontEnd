@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="mb-3 position-relative">
+      <input type="button" class="btn btn-primary position-absolute top-0 end-0" (click)="addnewtask()" value="Add Task">
+    </div>
+    <div>
+      <h2>Task List</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Task Name</th>
+            <th>Task Description</th>
+            <th>Assign To</th>            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of taskuserdetails ">
+            <td>{{task.taskName}}</td>
+            <td>{{task.taskDescription}}</td>
+            <td>{{task.userFirstNameLastName}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
